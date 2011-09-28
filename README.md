@@ -4,13 +4,17 @@ The purpose of this tool is to make the design of the website doesn't change aft
 
 ## Install:
 1) Install gem
+
 ``` ruby
 gem install cucumber-snapshot
 ```
+
 OR in your Gemfile (if using Bundler):
+
 ``` ruby
 gem 'cucumber-snapshot', :git=>'https://github.com/nna/cucumber-snapshot.git'
 ```
+
 2) Create a file features/support/cucumber_snapshot.rb  with the following content:
   require 'cucumber-snapshot/cucumber_hooks'
 
@@ -19,6 +23,7 @@ gem 'cucumber-snapshot', :git=>'https://github.com/nna/cucumber-snapshot.git'
   - examples/cucumber-snapshot_steps.rb 
 
 4) Run cucumber features:
+
 ``` bash
 bundle exec cucumber -t @snapshot
 ```
@@ -28,17 +33,21 @@ bundle exec cucumber -t @snapshot
 
 ### Capturing Snapshots
 cucumber-snapshot comes with some cucumber steps that you can use to take snapshots of your pages (see /examples folder):
+
 ``` gherkin
   Given I am logged with email "john@doe.com"
   When I go to the home page
   And I take a snapshot #Will take a snapshot of current page
 ```
+
  or you can use the @snap_capture tag
+
 ``` gherkin
   @snap_capture #Will take a snapshot at the When page
   Given I am logged with email "john@doe.com"
   When I go to the home page 
 ```
+
   - snapshots are : 
  	  full page screenshots as displayed using specified capybara driver (can be selenium or webrat)
     saved as .png   
@@ -63,10 +72,13 @@ cucumber-snapshot comes with some cucumber steps that you can use to take snapsh
  - Cucumber Rake Tasks to automatically take snapshot of every When step without adding @snapshot or @compare tags
  - Use generators to automatically create folders, add examples files to the project so you don't have to add them manually
  - Take snapshots of certains parts of page using 2 x,y coordinates (usefull if some parts always change): 
+
  ``` gherkin
  	And I take a snapshot at (x,y) and (x,y) # Will take a snapshot of current page of the square calculated with 2 points
  ```
+
  - Add error threshold on snapshots: 
+
  ``` gherkin
  	@snap_capture @snap_compare_5 #Will take a snapshot at the When page. Will fail if differences are > 5%
   	Given I am logged with email "john@doe.com"
