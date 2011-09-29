@@ -1,6 +1,6 @@
-# Cucumber-Snapshot: Design doesn't move !
+# Cucumber-Snapshot: Unchanged UX
 
-The purpose of this tool is to make the design of the website doesn't change after a change in CSS / Javascript. Cucumber is great to test the Website behave in defined way. Great but not enough ! What if an unclose "<div>" completely breaks the layout of your homepage? Do you think it is good enough ? I don't.
+The purpose of this tool is to make the design of the website doesn't change even after a tiny change in HTML / CSS / Javascript. Cucumber is great to test the Website behave in defined way. Great but not enough ! What if an unclose div completely breaks the layout of your homepage? Do you think it is well tested ? I don't.
 
 ## Install:
 1) Install gem
@@ -12,15 +12,18 @@ gem install cucumber-snapshot
 OR in your Gemfile (if using Bundler):
 
 ``` ruby
-gem 'cucumber-snapshot', :git=>'https://github.com/nna/cucumber-snapshot.git'
+gem 'cucumber-snapshot', :git=>'https://github.com/NNA/cucumber-snapshot'
 ```
 
 2) Create a file features/support/cucumber_snapshot.rb  with the following content:
-  require 'cucumber-snapshot/cucumber_hooks'
 
-3) Copy to your feature folder and adapt the following files: 
-  - examples/snapshot.feature
-  - examples/cucumber-snapshot_steps.rb 
+``` ruby
+  require 'cucumber-snapshot/cucumber_hooks'
+```
+
+3) Copy to your /feature folder and adapt the following files: 
+ - examples/snapshot.feature
+ - examples/cucumber-snapshot_steps.rb 
 
 4) Run cucumber features:
 
@@ -32,7 +35,7 @@ bundle exec cucumber -t @snapshot
 ## How To:
 
 ### Capturing Snapshots
-cucumber-snapshot comes with some cucumber steps that you can use to take snapshots of your pages (see /examples folder):
+cucumber-snapshot comes with some cucumber steps that you can use to take snapshots of your pages (see [examples]):
 
 ``` gherkin
   Given I am logged with email "john@doe.com"
@@ -48,14 +51,14 @@ cucumber-snapshot comes with some cucumber steps that you can use to take snapsh
   When I go to the home page 
 ```
 
-  - snapshots are : 
- 	  full page screenshots as displayed using specified capybara driver (can be selenium or webrat)
-    saved as .png   
-    saved using this folder pattern : "app_root" \ snapshots \ "name_of_when_step"
+snapshots are : 
+ - full page screenshots as displayed using specified capybara driver (can be selenium or webrat)
+ - saved as .png   
+ - saved using this folder pattern : "app_root" \ snapshots \ "name_of_when_step"
 
 ### Comparing Snapshots
 ``` gherkin
-  @snap_capture @snap_compare #Will take a snapshot at the When page and compare the pages step. will fail if differences are > 5%
+  @snap_capture @snap_compare #Will take a snapshot of When page and compare. Will fail if differences are > 5%
   Given I am logged with email "john@doe.com"
   When I go to the home page
 ```
@@ -64,12 +67,12 @@ cucumber-snapshot comes with some cucumber steps that you can use to take snapsh
   - Do not change Scenario name otherwise the previous snapshot will not be used
 
 ## TODO
- - Readme.md
- - Tests ! (yes I know it is a shame... blame on me)
+ - Tests! (yes I know it is a shame... blame on me)
  - Remove warning: class variable access from toplevel
  - Save snapshots in Scenario subfolders so it becomes possible to have 2 When steps on differents scenarios.
- - Document and refactor steps to use different drivers
+ - Document how to change driver and improve existing steps
  - Cucumber Rake Tasks to automatically take snapshot of every When step without adding @snapshot or @compare tags
+ - Reset Reference snapshots : maybe using a cucumber task
  - Use generators to automatically create folders, add examples files to the project so you don't have to add them manually
  - Take snapshots of certains parts of page using 2 x,y coordinates (usefull if some parts always change): 
 
@@ -84,3 +87,7 @@ cucumber-snapshot comes with some cucumber steps that you can use to take snapsh
   	Given I am logged with email "john@doe.com"
     When I go to the home page
  ```
+
+ - Use Travis CI
+
+ [examples]: https://github.com/NNA/cucumber-snapshot/tree/master/examples
