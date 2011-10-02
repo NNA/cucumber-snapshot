@@ -1,5 +1,3 @@
-require 'cucumber-snapshot'
-
 Given /^I take a snapshot of the current page and save it as "([^"]*)"$/ do |picture_name|
   Snapshot.capture page, picture_name
 end

@@ -1,5 +1,5 @@
 module CucumberSnapshot
-	class Scenario
+	class CucumberScenario
 		attr_accessor :sexp
 
 		def initialize(s_exp)
@@ -22,11 +22,11 @@ module CucumberSnapshot
 			@sexp.select{|x| x.class.to_s=='Array' && x[0].to_sym == :tag}.map{|e|e[1]}
 		end
 
-		def step_text step_array
+		def self.step_text step_array
 			step_array[3].gsub(' ','_')
 		end
 
-		def step_type step_array
+		def self.step_type step_array
 			step_array[2].strip
 		end
 
@@ -36,7 +36,11 @@ module CucumberSnapshot
 
 		def step_type_at position
 			# puts "steps_type_at #{position} #{step_type(steps[position])}"
-			step_type(steps[position])
+			if position >= steps.size
+				nil
+			else
+				CucumberScenario.step_type(steps[position])
+			end
 		end
 		
 		def step_is_last position

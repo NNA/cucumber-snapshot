@@ -1,11 +1,11 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
-require "cucumber-snapshot/version"
-require "cucumber-snapshot"
+# require "version"
+# require "cucumber-snapshot"
 
 Gem::Specification.new do |s|
   s.name        = "cucumber-snapshot"
-  s.version     = CucumberSnapshot::VERSION
+  s.version     = "0.0.2"#CucumberSnapshot::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Nicolas NARDONE"]
   s.email       = ["nico.nardone@gmail.com"]
@@ -22,7 +22,20 @@ Gem::Specification.new do |s|
 
   s.post_install_message = 'CucumberSnapshot is not installed !'
 
-  s.add_dependency('cucumber')
-  s.add_dependency('capybara')
-  s.add_dependency('rmagick')
+  s.add_dependency 'cucumber'
+  s.add_dependency 'capybara'
+  s.add_dependency 'rmagick'
+  s.add_dependency 'rake'
+
+  s.add_development_dependency 'minitest'
+  s.add_development_dependency 'guard'
+  s.add_development_dependency 'guard-minitest'
+  s.add_development_dependency 'spork'
+  s.add_development_dependency 'spork-testunit'
+  s.add_development_dependency 'guard-spork'
+  s.add_development_dependency 'rb-inotify'
+  s.add_development_dependency 'libnotify'
+  s.add_development_dependency 'cucumber'
+  s.add_development_dependency 'aruba'
+
 end
