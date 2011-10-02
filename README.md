@@ -67,7 +67,7 @@ snapshots are :
   - Do not change Scenario name otherwise the previous snapshot will not be used
 
 ## TODO
- - Tests! (yes I know it is a shame... blame on me)
+ - Feature Testing of app using cucumber-snapshot (should create snapshot, compare, etc...)
  - Remove warning: class variable access from toplevel
  - Save snapshots in Scenario subfolders so it becomes possible to have 2 When steps on differents scenarios.
  - Document how to change driver and improve existing steps
