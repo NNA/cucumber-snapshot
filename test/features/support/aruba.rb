@@ -13,21 +13,21 @@ module Aruba
     #   File.join(*dirs)
     # end
 
-    def run(cmd)
-      @commands ||= []
-      @commands << cmd
+    # def run(cmd)
+    #   @commands ||= []
+    #   @commands << cmd
 
-      cmd = detect_ruby(cmd)
+    #   cmd = detect_ruby(cmd)
 
-      announce_or_puts("$ cd #{Dir.pwd}") if @announce_dir
-      announce_or_puts("$ #{cmd}") if @announce_cmd
+    #   announce_or_puts("$ cd #{Dir.pwd}") if @announce_dir
+    #   announce_or_puts("$ #{cmd}") if @announce_cmd
 
-      process = Process.new(cmd, exit_timeout, io_wait)
-      register_process(cmd, process)
-      process.run!
+    #   process = Process.new(cmd, exit_timeout, io_wait)
+    #   register_process(cmd, process)
+    #   process.run!
 
-      block_given? ? yield(process) : process
-    end
+    #   block_given? ? yield(process) : process
+    # end
 
   end
 end
